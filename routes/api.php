@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HealthcheckController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/v1/healthcheck', function () {
-    return ['status' => 'healthy'];
-});
+Route::get('/v1/healthcheck', [HealthcheckController::class, 'index']);

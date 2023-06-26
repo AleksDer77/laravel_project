@@ -24,8 +24,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin
 
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
+RUN groupadd -g 1000 aleks
+RUN useradd -u 1000 -ms /bin/bash -g aleks aleks
 
 RUN chown -R www:www /var/www
 COPY --chown=www:www . /var/www

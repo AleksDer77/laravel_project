@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HealthcheckController;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/v1/healthcheck', [HealthcheckController::class, 'index']);
+
+Route::get('v1/products', function () {
+    return Product::query()->first();
+});

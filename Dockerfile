@@ -2,8 +2,7 @@ FROM php:8.2-fpm
 
 ENV NODE_VERSION=16.13.0
 
-RUN apt-get update && apt-get install -y \
-      apt-utils \
+RUN apt-get update && apt-get install -y apt-utils \
       libpq-dev \
       libpng-dev \
       libzip-dev \
@@ -16,7 +15,7 @@ RUN apt-get update && apt-get install -y \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY ./docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
+COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 
 # Install composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -31,6 +30,9 @@ RUN chown -R www:www /var/www
 COPY --chown=www:www . /var/www
 
 USER www
+
+RUN echo 'alias a="php artisan"' >> /home/www/.bashrc
+
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR=/home/www/.nvm
 

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'hello';
-});
+Route::get('api/v1/session', [SessionController::class, 'setSession']);
+Route::get('api/v1/session_refresh', [SessionController::class, 'refreshSession']);

@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Cart;
+use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-class ProductController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Product::query()->paginate(10);
+        return ['foo' => 'foo'];
     }
 
     /**
@@ -28,18 +31,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        $product = Product::query()->findOrFail($id);
-
-        dd($product->toArray());
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+//        $user = User::query()->findOrFail($id)->cart()->find;
+        $user = Order::query()->findOrFail($id)->user;
+        return $user;
     }
 
     /**
@@ -57,4 +51,5 @@ class ProductController extends Controller
     {
         //
     }
+
 }

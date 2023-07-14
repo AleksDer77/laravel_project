@@ -9,6 +9,9 @@ class SessionController extends Controller
     public function setSession()
     {
         $this->newSession();
+        if (session('count') !== null) {
+            session()->increment('count');
+        }
         return
             'Id: ' . session('user_id') . "<br>" .
             'count: ' . session('count');
@@ -19,18 +22,14 @@ class SessionController extends Controller
         session()->flush();
         $this->newSession();
         return
-            'Сессия успешно сброшена. Ваш новый id: ' . session('user_id') . "<br>" .
-            'Ваш новый счетчик: ' . session('count');
+            'Сессия успешно сброшена. Ваш новый id: ' . session('user_id');
     }
 
     protected function newSession(): void
     {
         if (session('user_id') === null) {
             session(['user_id' => Uuid::uuid4()]);
-            session(['count' => 1]);
-        }
-        if (session('count') !== null) {
-            session()->increment('count');
+            session(['count' => 0]);
         }
     }
 }

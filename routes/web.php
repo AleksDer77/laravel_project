@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Client\Request;

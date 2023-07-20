@@ -12,7 +12,13 @@ class ShowProducts extends Command
      *
      * @var string
      */
-    protected $signature = 'prod:list {count?} {--i|id} {--t|name : flag "t"(title) because flag "n" is busy }';
+    protected $signature = 'prod:list
+    {count?}
+    {--i|id}
+    {--t|name : flag "t"(title) because flag "n" is busy }
+    {--d|description}
+    {--k|calories}
+    {--c|cost}';
 
     /**
      * The console command description.
@@ -28,27 +34,21 @@ class ShowProducts extends Command
     {
         $count = $this->argument('count');
         $options = $this->options();
+        $params = [];
 
-        if ($options['id']) {
-            $product = Product::query()->orderBy('id')->take($count)->get('id')->toArray();
-            $this->table(['id'], $product);
+        foreach ($options as $key => $value) {
+            if ($value) {
+                $params[] = $key;
+            }
         }
 
-        if ($options['name']) {
-            $product = Product::query()->orderBy('id')->take($count)->get('name')->toArray();
-            $this->table(['name'], $product);
-        }
-
-        if ($options['id'] && $options['name']) {
-            $product = Product::query()->orderBy('id')->take($count)->get(['id', 'name'])->toArray();
-            $this->table(['id','name'], $product);
-        }
-
-        if (!$options['id'] && !$options['name']) {
+        if (count($params)) {
+            $product = Product::query()->orderBy('id')->take($count)->get($params)->toArray();
+            $this->table($params, $product);
+        } else {
             $product = Product::query()->orderBy('id')->take($count)->get()->toArray();
-            $this->table([],$product);
+            print_r($product);
         }
-
     }
 
 }

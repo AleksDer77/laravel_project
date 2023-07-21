@@ -19,7 +19,7 @@ class Product extends Model
 
     protected $fillable = [
       'name', 'cost', 'description',
-      'calories', 'image',
+      'calories', 'image', 'created_at',
     ];
 
 }

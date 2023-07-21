@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker;
 
 class ProductSeeder extends Seeder
 {
@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
     {
         Product::query()->insert([
             [
+                'created_at' => now(),
                 'name' => 'Черри Чиз',
                 'description' => 'Изысканные помидорки Черри, насыщенный сыр Филадельфия и тягучая Моцарелла.',
                 'image' => '/public/img/cherri-chiz.webp',

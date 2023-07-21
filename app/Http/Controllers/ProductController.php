@@ -59,4 +59,17 @@ class ProductController extends Controller
         $product = Product::query()->get()->where('id', $id);
         dd($product->toArray());
     }
+
+    public function update(Request $request, int $id)
+    {
+        $product = Product::query()->find($id);
+
+        $product->created_at = $request->created_at;
+        $product->cost = $request->cost;
+        $product->name = $request->name;
+        $product->description  = $request->description;
+        $product->calories = $request->calories;
+        $product->save();
+
+    }
 }

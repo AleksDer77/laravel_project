@@ -32,6 +32,7 @@ Route::prefix('v1/admin/')->group(function () {
     Route::get('/product', [ProductController::class, 'index'])->name('index');
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+    Route::put('product/{id}', [ProductController::class, 'update'])->name('product.update');
 
 });
 

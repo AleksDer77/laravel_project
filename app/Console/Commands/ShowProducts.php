@@ -32,23 +32,18 @@ class ShowProducts extends Command
      */
     public function handle()
     {
-        $count = $this->argument('count');
-        $options = $this->options();
+        $count = $this->argument('count') ?? 10;
         $params = [];
-
-        foreach ($options as $key => $value) {
+        foreach ($this->options() as $key => $value) {
             if ($value) {
                 $params[] = $key;
             }
         }
 
-        if (count($params)) {
-            $product = Product::query()->orderBy('id')->take($count)->get($params)->toArray();
-            $this->table($params, $product);
-        } else {
-            $product = Product::query()->orderBy('id')->take($count)->get()->toArray();
-            print_r($product);
-        }
+        $this->table(
+            $params,
+            Product::query()->orderBy('id')->take($count)->get(empty($params) ? ['*'] : $params)
+        );
     }
 
 }

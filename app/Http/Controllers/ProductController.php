@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $product = validator(
+        $validated = validator(
             [
                 'name'        => $request->name,
                 'description' => $request->description,
@@ -33,10 +33,11 @@ class ProductController extends Controller
         );
 
 
-        if ($product->fails()) {
+
+        if ($validated->fails()) {
             return response([
                 'status' => false,
-                'errors' => $product->messages(),
+                'errors' => $validated->messages(),
             ])->setStatusCode(422);
         }
 

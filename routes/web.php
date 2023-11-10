@@ -1,43 +1,43 @@
 <?php
 
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('api/v1/session', [SessionController::class, 'setSession']);
-Route::get('api/v1/session_refresh', [SessionController::class, 'refreshSession']);
+Route::get('/products', [ProductController::class, 'index'])->name('index');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
 Route::prefix('/api/v1/admin')->group(function () {
-    Route::get('/products', [ProductController::class, 'index'])->name('index');
-    Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
     Route::put('products/{id}', [ProductController::class, 'update'])->name('products.update');
 
 });
 
-Route::get('/form', function () {
-    return view('form');
-});
-//Route::post('/form', function (Request $request) {
-//    return $request->only('name', 'image');
-//})->name('form.form');
-Route::post('/form', function () {
-    session(['id'=>3, 'name'=>'hello']);
-    $session = session()->all();
+Route::middleware('guest')->group( function () {
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
-    dd($session);
-})->name('form.form');
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+
+});
+
+Route::middleware('auth')->group(function() {
+
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+});
+Route::get('/', function () {
+    return view('home.index');
+})->name('home');
+//Route::get('/home', function () {
+//    return view('home');
+//});
+Route::get('/admin', function () {
+    return view('admin.login');
+});
+Route::post('/admin', function () {
+    return 'hi, admin';
+})->name('admin');

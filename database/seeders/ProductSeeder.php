@@ -11,15 +11,14 @@ class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     */
-    public function run(): void
+     */function run(): void
     {
         Product::query()->insert([
             [
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Черри Чиз',
                 'description' => 'Изысканные помидорки Черри, насыщенный сыр Филадельфия и тягучая Моцарелла.',
-                'image' => '/public/img/cherri-chiz.webp',
+                'image' => 'img/catalog/черричиз.jpg',
                 'calories' => 272,
                 'cost' => 590,
             ],
@@ -27,7 +26,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => '«Чикен Комбо»',
                 'description' => 'Три наши топовые пиццы (23 см) - Чикен Рэнч, Чикен Барбекю и Куриный Жульен + литр клюквенного морса в одном комбо.',
-                'image' => '/public/img/Чикен Комбо.webp',
+                'image' => 'img/catalog/ветчинагрибы.webp',
                 'calories' => 320,
                 'cost' => 1920,
             ],
@@ -35,7 +34,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Пиццамен',
                 'description' => 'Наша фирменная пицца – тягучая моцарелла, сочная куриная грудка и пепперони, поджаристый бекон, спелые томаты, шампиньоны, красный лук и ароматный чеснок. Посыпается пармезаном и свежей зеленью.',
-                'image' => '/public/img/пиццамен.webp',
+                'image' => 'img/catalog/пиццамен.jpg',
                 'calories' => 242,
                 'cost' => 590,
             ],
@@ -43,7 +42,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Пепперони',
                 'description' => 'Классический рецепт пиццы пепперони – пикантные колбаски пепперони со свежими шампиньонами и сыром моцарелла.',
-                'image' => '/public/img/пепперони.webp',
+                'image' => 'img/catalog/пепперони.jpg',
                 'calories' => 264,
                 'cost' => 530,
             ],
@@ -51,7 +50,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Классика',
                 'description' => 'Классическое сочетание пикантных колбасок пепперони и ветчины, свежих шампиньонов с сырами моцарелла и пармезан.',
-                'image' => '/public/img/классика.webp',
+                'image' => 'img/catalog/классика.jpg',
                 'calories' => 235,
                 'cost' => 600,
             ],
@@ -59,7 +58,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Мясная',
                 'description' => 'Изысканное сочетание куриной грудки, свинины, ветчины, поджаристого бекона и колбасок пепперони в сочетании с сыром моцарелла.',
-                'image' => '/public/img/Мясная.webp',
+                'image' => 'img/catalog/мясная.jpg',
                 'calories' => 580,
                 'cost' => 580,
             ],
@@ -67,7 +66,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Гавайская',
                 'description' => 'Сочетание сладкого ананаса, ветчины и сыра моцарелла.',
-                'image' => '/public/img/гавайская.webp',
+                'image' => 'img/catalog/гавайская.jpg',
                 'calories' => 230,
                 'cost' => 530,
             ],
@@ -75,7 +74,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Маргарита',
                 'description' => 'Сочные тепличные томаты и нежный сыр моцарелла.',
-                'image' => '/public/img/маргарита.webp',
+                'image' => 'img/catalog/маргарита.jpg',
                 'calories' => 230,
                 'cost' => 490,
             ],
@@ -83,7 +82,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Домашняя',
                 'description' => 'Спелые томаты, шампиньоны, ветчина и сыр моцарелла, посыпается пармезаном и ароматной свежей зеленью.',
-                'image' => '/public/img/домашняя.webp',
+                'image' => 'img/catalog/домашняя.jpg',
                 'calories' => 220,
                 'cost' => 630,
             ],
@@ -91,7 +90,7 @@ class ProductSeeder extends Seeder
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
                 'name' => 'Куриный жульен',
                 'description' => 'Пряный горчичный соус, сыр моцарелла, ароматный чеснок и красный лук, куриная грудка и свежие шампиньоны.',
-                'image' => '/public/img/кур жульен.webp',
+                'image' => 'img/catalog/куржульен.jpg',
                 'calories' => 260,
                 'cost' => 610,
             ],

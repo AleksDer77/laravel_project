@@ -2,7 +2,7 @@ const classNameActive = 'products-element__btn_active'
 const labelAdd = 'Добавить в корзину'
 const labelRemove = 'Удалить из корзины'
 let countProduct = 1;
-
+let productsStore = getProductsId();
 function getProductsId() {
     const items = localStorage.getItem('id_products')
     if (items !== null) {

@@ -14,15 +14,11 @@ class Cart extends Model
         'user_id', 'product_id',
     ];
 
-//    public function user(): Relation
-//    {
-//        return $this->belongsTo(User::class);
-//    }
-
-    public function cartProduct(): Relation
+    public function user(): Relation
     {
-        return $this->hasMany(CartProduct::class);
+        return $this->belongsTo(User::class);
     }
+
 
 
 }

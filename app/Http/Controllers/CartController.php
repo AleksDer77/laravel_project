@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -15,6 +16,15 @@ use function PHPUnit\Framework\isNull;
 
 class CartController extends Controller
 {
+    public function index()
+    {
+        $cart = Auth::user()->cart;
+//        $user = Cart::query()->find(1)->user;
+//        if (!empty())
+//        $cart = Cart::query()->create(['user_id' => Auth::user()->id, 'product_id' => $id]);
+        return $cart;
+        return Product::query()->get(['name', 'cost']);
+    }
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface

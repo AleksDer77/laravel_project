@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::middleware('guest')->group( function () {
 });
 
 Route::middleware('auth')->group(function() {
-
+    Route::get('cart', [CartController::class, 'index'])->name('cart');
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
 Route::get('/', function () {

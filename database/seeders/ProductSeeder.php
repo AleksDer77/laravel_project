@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'created_at' => fake()->dateTimeBetween('-6 months', now()),
-                'name' => '«Чикен Комбо»',
+                'name' => 'Чиккен Комбо',
                 'description' => 'Три наши топовые пиццы (23 см) - Чикен Рэнч, Чикен Барбекю и Куриный Жульен + литр клюквенного морса в одном комбо.',
                 'image' => 'img/catalog/ветчинагрибы.webp',
                 'calories' => 320,
